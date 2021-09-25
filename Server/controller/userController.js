@@ -24,8 +24,18 @@ const create = async (req, res) => {
   res.status(201).json({userId})
 }
 
+
+const login = async (req, res) => {
+  const data = req.body;  
+  const userInfo = await userServices.login(data);
+  res.status(200).json({userInfo});
+}
+
+
+
 module.exports ={
   getAll,
   getById,
-  create
+  create,
+  login
 };

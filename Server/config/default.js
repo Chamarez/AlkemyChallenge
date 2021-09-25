@@ -7,5 +7,9 @@ module.exports ={
     db:process.env.MYSQL_DB_ENV || "alkemy",
     username: process.env.MYSQL_USER_ENV || "root",
     password: process.env.MYSQL_PASSWORD_ENV || "root"
+  },
+  auth:{
+    secret: process.env.SECRET_KEY,
+    tokenExpire:"24h" 
   }
 }
