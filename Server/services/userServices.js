@@ -5,13 +5,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-
 const create = async ({
   username,
   password,
-  email
+  email,
 })=>{
-  console.log("user crete :"+JSON.stringify({username,password,email}));
+  console.log("createUser - userName[" + username + " " + password + " " + email + "]");
   //Check duplicate Usarname
   const userExist = await userModel.findOne({
     where: { username: username.toLowerCase() },
@@ -26,18 +25,20 @@ const create = async ({
   if (emailExist) {
     throw new error.AppError(exceptions.exceptionType.users.emailExists);
   }
-
+console.log("esto es antes de const data: " + username + password + email)
  const data = {
-  username:username.toLowerCase(),
+  username: username.toLowerCase(),
   password: encryptPassword(password),
-  email
- }
-
+  email,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+ };
+ console.log("data is : " + JSON.stringify(data) + "]");
  try {
   return await userModel.create(data);
 } catch (e) {
   const errorMessage = `Create User - Detail: ` + e.message;
-  console.error("createUser - user_name[" + username + "]");
+  console.error("createUser - username[" + username + "]");
   throw new error.AppError(
     exceptions.exceptionType.database.entity.canNotBeCreated,
     errorMessage
@@ -84,19 +85,10 @@ const generateToken = (userId, username) => {
 };
 
 
-const getAllService = async ({ condition, email }) => {
-  console.log("getAllService - condition : " + condition + "  email: " + email);
-  const where = {};
-  if (condition) {
-    where.condition = condition;
-  }
-  if (email) {
-    where.email = email;
-  }
+const getAllService = async () => {
 
   const usuarios = await userModel.findAll({
-    atributes: [" condition", "email"],
-    where: where,
+
   });
   // const usuarios = await userModel.findAll({condition,email})
   console.log(" usuarios return :" + usuarios);

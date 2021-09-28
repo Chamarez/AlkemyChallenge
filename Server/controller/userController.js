@@ -3,7 +3,7 @@ const exceptions = require('../common/exceptions');
 const error= require('../common/error');
 
 const getAll = async (req,res) => {
-  const usario = await userServices.getAllServices();
+  const usario = await userServices.getAllService();
   res.status(200).json(usario);
 }
 
@@ -16,21 +16,18 @@ const getById = async (req,res)=>{
   res.status(200).json(usuarios)
 }
 
-const create = async (req, res) => {
-  
+const create = async (req, res) => {  
   const data = req.body
-  console.log("llega en el body "+JSON.stringify(data.username));
+  console.log("llega en el body "+JSON.stringify(data));
   const userId = await userServices.create(data);
   res.status(201).json({userId})
 }
 
-
 const login = async (req, res) => {
   const data = req.body;  
   const userInfo = await userServices.login(data);
-  res.status(200).json({userInfo});
+  res.json({userInfo});
 }
-
 
 
 module.exports ={

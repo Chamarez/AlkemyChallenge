@@ -10,14 +10,4 @@ router.post('/singin', (req, res)=>{
 });
 
 
-/* router.post('/singin', (req, res)=>{
-    routeController.handleRequest(req, res, budgetController.getAllEntry);
-});
- */
-
-
-/* router.post('/singup', (req, res)=>{
-    routeController.handleRequest(req, res, budgetController.getAllEgress);
-}); */
-
 module.exports = router;    

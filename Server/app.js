@@ -21,4 +21,6 @@ app.listen(port, ()=> {
 
 app.use("/user",require("./routes/userRoutes"));
 
-app.use("/auth",require("./routes/authRoutes"))
+app.use("/auth",require("./routes/authRoutes"));
+
+app.use("/balance",require("./routes/balanceRouters"));
