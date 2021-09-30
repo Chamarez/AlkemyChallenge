@@ -5,11 +5,13 @@ const passport = require('passport');
 const port = 3000;
 const passportConfig = require('./config/server/passportConfig');
 const bodyParser = require('body-parser');
-
+var cors = require('cors')
 
 passport.use(passportConfig.createStrategy());
 
 app.use(passport.initialize());
+
+app.use(cors())
 
 app.use(bodyParser.json());
 
