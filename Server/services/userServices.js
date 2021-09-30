@@ -67,6 +67,7 @@ const login = async ({ username, password }) => {
     );
   }
   const token = generateToken(user.userId, user.username);
+  const tok = token
   return { token };
 };
 

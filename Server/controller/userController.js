@@ -25,8 +25,9 @@ const create = async (req, res) => {
 
 const login = async (req, res) => {
   const data = req.body;  
-  const userInfo = await userServices.login(data);
-  res.json({userInfo});
+  const tok = await userServices.login(data);
+  const token = tok.token
+  res.json({token});
 }
 
 

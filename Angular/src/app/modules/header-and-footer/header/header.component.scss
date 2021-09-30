@@ -61,7 +61,10 @@
   font-weight: bold !important;
   font-style:italic;
 }
+.nav-item{
+  cursor: pointer;
 
+}
 .roll-in-blurred-right {
 	animation: roll-in-blurred-right 4s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
