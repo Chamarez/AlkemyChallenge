@@ -1,0 +1,32 @@
+<div class="container formContainer">
+  <form [formGroup]="form" (ngSubmit)="editOperation()">
+    <div class="row">
+      <h1 class="text-center">Edit Operation</h1>
+      <div class="col">
+        <label class="label mb-3">Edit Mount: {{mount}}</label>
+        <input
+          type="number"
+          id="mount"
+          class="form-control form-control-lg"
+          formControlName="mount"
+        />
+      </div>
+      <div class="col">
+        <label class="label mb-3">Edit Concept: {{concept}}</label>
+        <input
+          type="text"
+          id="concept"
+          class="form-control form-control-lg"
+          formControlName="concept"
+        />
+      </div>
+
+      <div class="col mt-5">
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid" (click)="activeModal.close('Close click')">
+          Edit Operation
+        </button>
+      </div>
+
+    </div>
+  </form>
+</div>

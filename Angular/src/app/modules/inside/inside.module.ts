@@ -4,12 +4,14 @@ import { InsideComponent } from './inside.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HeaderAndFooterModule } from '../header-and-footer/header-and-footer.module';
 import { InsideRoutingModule } from './inside-routing.module';
+import { EditComponent } from './edit/edit.component';
 
 
 
 @NgModule({
   declarations: [
-    InsideComponent
+    InsideComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
