@@ -83,7 +83,6 @@ map((res:UserResponse)=>{
 
   decodeToken(){
     const userToken = localStorage.getItem('token');
-
     const token = JSON.stringify(userToken);
     const decode= jwt_decode(token);
     return token;

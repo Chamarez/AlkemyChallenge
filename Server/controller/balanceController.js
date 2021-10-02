@@ -22,11 +22,11 @@ const jwt = require("jsonwebtoken");
   }
 
   const getByIncome = async (req,res) => {
-    const dataBody = req.body;
+    ///const dataBody = req.body;
     const dataHeader = req.header("auth");
     const decode = jwt.decode(dataHeader);
     const userId = decode.userId;
-    const operationType = dataBody.operationType;
+    const operationType = 1 ///dataBody.operationType;
     
 
     console.log("getBy income: "+  +" " + operationType +" "+ userId);
@@ -39,11 +39,11 @@ const jwt = require("jsonwebtoken");
 
 
   const getByexpense = async (req,res) => {
-    const dataBody = req.body;
+    ///const dataBody = req.body;
     const dataHeader = req.header("auth");
     const decode = jwt.decode(dataHeader);
     const userId = decode.userId;
-    const operationType = dataBody.operationType;
+    const operationType = 0 ///dataBody.operationType;
     
 
     console.log("getBy income: "+  +" " + operationType +" "+ userId);
@@ -79,11 +79,24 @@ const jwt = require("jsonwebtoken");
 
 
 
+
+  const updateOperation = async (req, res) => {  
+    const dataBody = req.body;
+    console.log("llega en el body "+JSON.stringify(dataBody));
+    const dataHeader = req.header("auth");
+    const decode = jwt.decode(dataHeader);
+    console.log(decode)
+    const updatedCount = await balanceServices.updateOperation(decode, dataBody);
+    res.status(201).json("Operation Modified")
+   }
+
+
   module.exports ={
     getAll,
     create,
     getByIncome,
     getByexpense,
-    deleteOperation
+    deleteOperation,
+    updateOperation
   };
   

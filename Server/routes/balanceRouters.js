@@ -25,4 +25,8 @@ router.get("/income",(req, res,)=> {
     routeController.handleRequest(req, res,balanceController.deleteOperation);
   });
 
+  router.put("/update",(req, res,)=> {
+    routeController.handleRequest(req, res,balanceController.updateOperation);
+  });
+
   module.exports = router;

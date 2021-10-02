@@ -15,6 +15,11 @@ const  BalanceModel = sequelizeConnection.define(
         allowNull: false,
         fields: 'userId'
     },
+    concept: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      fields: 'concept'
+    },
     income: {
         type: Sequelize.DOUBLE,
         allowNull: true,

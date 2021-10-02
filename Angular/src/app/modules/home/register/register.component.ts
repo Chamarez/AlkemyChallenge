@@ -19,15 +19,13 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
 
+
   constructor(private regServ  : RegisterService, private fb: FormBuilder, private router: Router) {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(6) ]],
       password: ['',[Validators.required, Validators.minLength(6)]],
       passwordconfirm: ['',[Validators.required]],
       email: ['',[Validators.required , Validators.email]],
-
-
-
     },{
 
        validator: ConfirmedValidator('password', 'passwordconfirm')
