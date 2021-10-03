@@ -11,9 +11,8 @@ import {
 import { OperationsService } from 'src/app/services/operations.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { EditComponent } from './edit/edit.component';
-
 
 @Component({
   selector: 'app-inside',
@@ -36,24 +35,18 @@ export class InsideComponent implements OnInit {
     private operationSvc: OperationsService,
     private fb: FormBuilder,
     private modalService: NgbModal
-
   ) {
     this.form = this.fb.group({
       mount: [null, [Validators.required, Validators.minLength(1)]],
       concept: ['', [Validators.required, Validators.minLength(3)]],
       operation: ['', [Validators.required]],
     });
-
-
   }
   ngOnInit(): void {
     this.income();
     this.expenses();
     this.total();
-
   }
-
-
 
   CreatOperation() {
     const mount = this.form.value.mount;
@@ -84,10 +77,7 @@ export class InsideComponent implements OnInit {
       console.log(data);
     });
     window.location.reload();
-
   }
-
-
 
   getToken() {
     const token = localStorage.getItem('token');
@@ -161,8 +151,8 @@ export class InsideComponent implements OnInit {
       .slice()
       .sort((a: any, b: any) => b.entryId - a.entryId);
     this.allOperations = sortedInput;
-/* If want to have - in empty colums */
-/*     for (let i = 0; i < this.allOperations.length; i++) {
+    /* If want to have - in empty colums */
+    /*     for (let i = 0; i < this.allOperations.length; i++) {
       if(this.allOperations[i].expenses == null){
         this.allOperations[i].expenses = "-"
       }
@@ -186,7 +176,6 @@ export class InsideComponent implements OnInit {
     } else {
       this.positive = 0;
     }
-
   }
 
   deleteOperation(entryId: any) {
@@ -201,16 +190,14 @@ export class InsideComponent implements OnInit {
     window.location.reload();
   }
 
-  modalRef(entryId: number, income:any, expense:any, concept:string) {
+  modalRef(entryId: number, income: any, expense: any, concept: string) {
     entryId = entryId;
     income = income || 0;
     expense = expense || 0;
-    const dialogRef = this.modalService.open(EditComponent, {
-
-    });
-    dialogRef.componentInstance.income= income;
-    dialogRef.componentInstance.entryId= entryId;
-    dialogRef.componentInstance.expense=expense;
-    dialogRef.componentInstance.concept=concept;
+    const dialogRef = this.modalService.open(EditComponent, {});
+    dialogRef.componentInstance.income = income;
+    dialogRef.componentInstance.entryId = entryId;
+    dialogRef.componentInstance.expense = expense;
+    dialogRef.componentInstance.concept = concept;
   }
 }
