@@ -88,5 +88,18 @@ map((res:UserResponse)=>{
     return token;
 
   }
+  decodeUsername(){
+    const userToken = localStorage.getItem('token');
+    if(userToken!=null){
 
+      const token = JSON.stringify(userToken);
+      let user= jwt_decode(token);
+      let user2 = JSON.stringify(user);
+      console.log(user2)
+      let user3 = JSON.parse(user2)
+      user = user3.username;
+      return user;
+    }
+
+    }
 }

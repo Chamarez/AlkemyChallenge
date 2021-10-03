@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Container, Main, tsParticles } from 'tsparticles';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isLogged = false;
+  user : any;
   id = 'tsparticles';
   particlesUrl = 'http://foo.bar/particles.json';
-  constructor(private router: Router) {}
+  constructor(private authSvc: AuthService, private router: Router) {}
 
   particlesOptions = {
     particles: {
-      color: { value: '#92B4A7' },
+      color: { value: '#29312e' },
       opacity: {
         value: 1,
         random: {
@@ -23,17 +26,22 @@ export class HeaderComponent implements OnInit {
         },
         animation: {
           enable: true,
-          speed: 0.8,
+          speed: 1.2,
           minimumValue: 0.05,
         },
       },
       size: {
-        value: 60,
+        value: 20,
       },
     },
   };
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authSvc.isLogged.subscribe((res) => (this.isLogged = res));
+    this.username();
+
+
+  }
   particlesLoaded(container: Container): void {
     console.log(container);
   }
@@ -50,5 +58,17 @@ export class HeaderComponent implements OnInit {
   }
   register() {
     this.router.navigate(['/register']);
+  }
+  logOut(){
+    this.authSvc.logout();
+  }
+
+  navigateToInside(){
+
+    this.router.navigate(['/inside'])
+  }
+  username(){
+     this.user = this.authSvc.decodeUsername()
+
   }
 }

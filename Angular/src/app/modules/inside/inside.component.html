@@ -1,35 +1,36 @@
 <app-header></app-header>
+<main>
 
-<div class="container formContainer">
-  <form [formGroup]="form" (ngSubmit)="CreatOperation()">
-    <div class="row">
-      <h1 class="text-center">New Operation</h1>
-      <div class="col">
-        <label class="label mb-3">Mount</label>
-        <input
+  <div class="container formContainer">
+    <form [formGroup]="form" (ngSubmit)="CreatOperation()">
+      <div class="row firstContainer">
+        <h1 class="text-center">New Operation</h1>
+        <div class="col">
+          <label class="label mb-3">Mount</label>
+          <input
           type="number"
           id="mount"
           class="form-control form-control-lg"
           formControlName="mount"
-        />
-      </div>
-      <div class="col">
-        <label class="label mb-3">Concept</label>
-        <input
+          />
+        </div>
+        <div class="col">
+          <label class="label mb-3">Concept</label>
+          <input
           type="text"
           id="concept"
           class="form-control form-control-lg"
           formControlName="concept"
-        />
-      </div>
-      <div class="col">
-        <label class="label mb-3">Operation Type</label>
-        <select
+          />
+        </div>
+        <div class="col">
+          <label class="label mb-3">Operation Type</label>
+          <select
           class="form-select"
           id="inputGroupSelect03"
           aria-label="Example select with button addon"
           formControlName="operation"
-        >
+          >
           <option selected value="1">Income</option>
           <option value="2">Expense</option>
         </select>
@@ -63,52 +64,54 @@
         <th scope="row" class="concept">{{ el.concept}}</th>
         <th scope="row" class="income">{{ el.income}}</th>
         <th
-          scope="row"
-          class="expense"
-          style="color: red; border-left: 1px white solid"
+        scope="row"
+        class="expense"
+        style="color: red; border-left: 1px white solid"
         >
-          {{ el.expenses }}
-        </th>
-        <th scope="row" class="icons">
-          <button (click)="deleteOperation(el.entryId)" type="submit">
-            <img src="../../../assets/trash-fill.svg" alt="" />
-          </button>
-          <button (click)="modalRef(el.entryId, el.income, el.expenses, el.concept)" >
-            <img src="../../../assets/pencil-square.svg" alt=""  />
-          </button>
-        </th>
-      </tr>
+        {{ el.expenses }}
+      </th>
+      <th scope="row" class="icons">
+        <button (click)="deleteOperation(el.entryId)" type="submit">
+          <img src="../../../assets/trash-fill.svg" alt="" />
+        </button>
+        <button (click)="modalRef(el.entryId, el.income, el.expenses, el.concept)" >
+          <img src="../../../assets/pencil-square.svg" alt=""  />
+        </button>
+      </th>
+    </tr>
 
-      <tr>
-        <th scope="row" class="id"></th>
-        <th scope="row" class="date"></th>
-        <th scope="row" class="concept text-end">Total Acount</th>
-        <th scope="row" class="income">{{ incomeAmount }}</th>
-        <th
-          scope="row"
-          class="expense"
-          style="color: red; border-left: 1px white solid"
-        >
-          {{ expenseAmount }}
-        </th>
-        <th scope="row" class="icons"></th>
-      </tr>
-      <tr>
-        <th scope="row" class="id"></th>
-        <th scope="row" class="date"></th>
-        <th scope="row" class="concept text-end">Total</th>
-        <th scope="row" class="income">{{ positive }}</th>
-        <th
-          scope="row"
-          class="expense"
-          style="color: red; border-left: 1px white solid"
-        >
-          {{ negative }}
-        </th>
-        <th scope="row" class="icons"></th>
-      </tr>
-    </tbody>
-  </table>
+    <tr>
+      <th scope="row" class="id"></th>
+      <th scope="row" class="date"></th>
+      <th scope="row" class="concept text-end">Total Acount</th>
+      <th scope="row" class="income">{{ incomeAmount }}</th>
+      <th
+      scope="row"
+      class="expense"
+      style="color: red; border-left: 1px white solid"
+      >
+      {{ expenseAmount }}
+    </th>
+    <th scope="row" class="icons"></th>
+  </tr>
+  <tr>
+    <th scope="row" class="id"></th>
+    <th scope="row" class="date"></th>
+    <th scope="row" class="concept text-end">Total</th>
+    <th scope="row" class="income">{{ positive }}</th>
+    <th
+    scope="row"
+    class="expense"
+    style="color: red; border-left: 1px white solid"
+    >
+    {{ negative }}
+  </th>
+  <th scope="row" class="icons"></th>
+</tr>
+</tbody>
+</table>
 </div>
 
 
+
+</main>
